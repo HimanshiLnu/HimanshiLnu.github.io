@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Himanshi | Data analytics and visualization</title>
+<meta name="description" content="Portfolio of Himanshi. Dashboards, databases and data models.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F4F6F3;
+    --ink: #15232B;
+    --muted: #55666B;
+    --teal: #0F6C73;
+    --amber: #E6A23C;
+    --mist: #D9E3E1;
+    --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--teal); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  a:hover { color: var(--ink); }
+  :focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; border-radius: 2px; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* top bar */
+  header.bar { padding: 22px 0; }
+  header.bar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .mark { font-family: var(--display); font-weight: 700; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+  nav { display: flex; gap: 22px; flex-wrap: wrap; }
+  nav a { color: var(--ink); text-decoration: none; font-weight: 500; font-size: .98rem; }
+  nav a:hover { color: var(--teal); text-decoration: underline; text-underline-offset: 6px; }
+
+  /* hero */
+  .hero { padding: 40px 0 72px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center; }
+  h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(3.4rem, 9vw, 7rem);
+    line-height: .95;
+    letter-spacing: -0.03em;
+    margin: 0 0 20px;
+  }
+  .role { font-family: var(--display); font-weight: 500; font-size: clamp(1.3rem, 2.6vw, 1.75rem); line-height: 1.25; margin: 0 0 18px; color: var(--teal); }
+  .lede { max-width: 34rem; margin: 0 0 28px; color: var(--ink); }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-block; padding: 12px 20px; border-radius: 4px;
+    font-weight: 600; text-decoration: none; border: 2px solid var(--ink);
+  }
+  .btn.primary { background: var(--ink); color: var(--paper); }
+  .btn.primary:hover { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .btn.ghost { color: var(--ink); background: transparent; }
+  .btn.ghost:hover { background: var(--mist); color: var(--ink); }
+
+  .portrait { width: 100%; max-width: 380px; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 6px solid var(--mist); justify-self: center; display: block; }
+
+  /* sections */
+  section { padding: 64px 0; border-top: 1px solid var(--mist); }
+  h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.5rem); letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 28px; }
+  .cols { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; }
+  .cols > h2 { margin: 0; }
+  .prose p { margin: 0 0 1em; max-width: 40rem; }
+  .prose p:last-child { margin-bottom: 0; }
+
+  /* projects */
+  .projects { list-style: none; margin: 0; padding: 0; }
+  .project { display: grid; grid-template-columns: 1.1fr 2fr; gap: 12px 48px; padding: 28px 0; border-top: 2px solid var(--ink); }
+  .project:last-child { border-bottom: 2px solid var(--ink); }
+  .project h3 { font-family: var(--display); font-size: 1.45rem; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.01em; }
+  .stack { margin: 0; color: var(--muted); font-size: .95rem; }
+  .project p { margin: 0 0 12px; max-width: 40rem; }
+  .project a { font-weight: 600; }
+
+  /* skills */
+  .skills { margin: 0; display: grid; grid-template-columns: 11rem 1fr; gap: 14px 24px; }
+  .skills dt { font-weight: 600; }
+  .skills dd { margin: 0; }
+
+  /* experience */
+  .roles { list-style: none; margin: 0; padding: 0; }
+  .roles li { display: grid; grid-template-columns: 11rem 1fr; gap: 6px 24px; padding: 14px 0; border-top: 1px solid var(--mist); }
+  .roles li:first-child { border-top: 0; padding-top: 0; }
+  .roles .when { color: var(--muted); }
+
+  footer { padding: 48px 0 64px; border-top: 1px solid var(--mist); }
+  .contact { display: flex; flex-wrap: wrap; gap: 14px 32px; font-size: 1.15rem; margin: 0 0 24px; padding: 0; list-style: none; }
+  .fine { color: var(--muted); font-size: .9rem; margin: 0; }
+
+  @media (max-width: 820px) {
+    .hero .wrap, .cols, .project { grid-template-columns: 1fr; }
+    .hero { padding-bottom: 48px; }
+    .portrait { max-width: 260px; justify-self: start; }
+    .skills, .roles li { grid-template-columns: 1fr; gap: 2px; }
+    .skills dd { margin-bottom: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="#top">Himanshi</a>
+    <nav aria-label="Main">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Himanshi</h1>
+        <p class="role">Data analytics and visualization</p>
+        <p class="lede">I build databases and dashboards. I'm finishing my MS in Data Analytics and Visualization at Yeshiva University in New York.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">See my projects</a>
+          <a class="btn ghost" href="#contact">Get in touch</a>
+        </div>
+      </div>
+
+      <img class="portrait" src="headshot.png" alt="Photo of Himanshi" width="420" height="420">
+    </div>
+  </div>
+
+  <section id="projects" aria-labelledby="projects-h">
+    <div class="wrap">
+      <h2 id="projects-h">Projects</h2>
+      <ul class="projects">
+
+        <li class="project">
+          <div>
+            <h3>Level Up PT website rebuild</h3>
+            <p class="stack">Team project with 3 other students</p>
+          </div>
+          <div>
+            <p>Four Yeshiva University students rebuilt the website for a physical therapy and wellness practice in Florida. We wrote the copy from what the client told us in our calls. My part: I worked on some of the sub pages and tweaked the chatbot.</p>
+            <a href="https://github.com/HimanshiLnu/levelup-site">View on GitHub</a>
+          </div>
+        </li>
+
+        <li class="project">
+          <div>
+            <h3>NYC 311 Smart Complaint Explorer and AI Assistant</h3>
+            <p class="stack">PostgreSQL, Python, MCP, Chart.js</p>
+          </div>
+          <div>
+            <p>I cleaned the 2025 NYC 311 data and joined it with weather data. The dashboard shows complaints by borough, season, temperature and agency. I also built an MCP server so an AI assistant can query the same data.</p>
+            <a href="https://github.com/HimanshiLnu/NYC-311-Smart-Complaint-Explorer-With-AI-Assistance">View on GitHub</a>
+          </div>
+        </li>
+
+        <li class="project">
+          <div>
+            <h3>Algorithmic trading strategy for QQQ</h3>
+            <p class="stack">Python, pandas, backtesting.py, yfinance</p>
+          </div>
+          <div>
+            <p>A team project with 3 other students for Analytics Programming. We built a rule-based strategy for the QQQ ETF. It starts with a moving average crossover and adds an RSI filter and risk rules. We tuned it on data from 2023 to April 2025 and tested it on the year after.</p>
+            <a href="https://github.com/HimanshiLnu/QQQ-Algorithmic-Trading-Strategy">View on GitHub</a>
+          </div>
+        </li>
+
+        <li class="project">
+          <div>
+            <h3>Manhattan residential noise complaints</h3>
+            <p class="stack">R, Shiny, Poisson regression</p>
+          </div>
+          <div>
+            <p>A team project with 1 other student for Computational Math and Stats. We studied when residential noise complaints happen in Manhattan using 2025 NYC 311 data. Complaints rise in the late evening and on weekends. A Poisson regression showed that hour, weekday and season are linked to complaint counts. We also built a Shiny dashboard for the results.</p>
+            <a href="https://github.com/HimanshiLnu/Manhattan-Noise-Complaints-Analysis">View on GitHub</a>
+          </div>
+        </li>
+
+        <li class="project">
+          <div>
+            <h3>NYC 311 complaints dashboard in Tableau</h3>
+            <p class="stack">Tableau, Python, pandas</p>
+          </div>
+          <div>
+            <p>A project for Visual Design and Storytelling. I cleaned about 3.1 million NYC 311 complaints and joined them with daily weather data. The Tableau dashboard shows complaints by month, season, borough and agency, and how fast they get resolved. I also looked at complaints with very long resolution times. About 14% took more than 5.5 days to close.</p>
+            <a href="https://github.com/HimanshiLnu/NYC-311-Tableau-Dashboard">View on GitHub</a>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <section id="about" aria-labelledby="about-h">
+    <div class="wrap cols">
+      <h2 id="about-h">About</h2>
+      <div class="prose">
+        <p>I'm a software engineer with 8+ years of experience in embedded and enterprise systems. I worked at Fujitsu, Capgemini, Altran and Samsung. Now I'm in the final semester of my MS in Data Analytics and Visualization at Yeshiva University. I work mostly with PostgreSQL, Python, R and Tableau.</p>
+        <p>I like projects where the data model, the query and the chart all have to match. I also use AI tools when I build, such as MCP servers and Claude skills.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-h">
+    <div class="wrap cols">
+      <h2 id="skills-h">Skills</h2>
+      <dl class="skills">
+        <dt>Databases</dt>
+        <dd>PostgreSQL, SQL</dd>
+        <dt>Data modeling</dt>
+        <dd>Star schemas, slowly changing dimensions, referential integrity</dd>
+        <dt>Programming</dt>
+        <dd>Python, R, SQL, C, C++, JavaScript, Jupyter</dd>
+        <dt>Analytics and visualization</dt>
+        <dd>Tableau, Pandas, data cleaning, statistical analysis, Shiny, Chart.js, dashboard design</dd>
+        <dt>AI tooling</dt>
+        <dd>MCP servers, Claude skills, Claude Code</dd>
+        <dt>Engineering tools</dt>
+        <dd>Git, Linux, GDB, Jira</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="experience-h">
+    <div class="wrap cols">
+      <h2 id="experience-h">Experience</h2>
+      <ul class="roles">
+        <li>
+          <span class="when">Mar 2022 – Apr 2025</span>
+          <span><strong>Senior Application Developer (C/C++ backend)</strong> at Fujitsu Consulting India. Found and fixed serious bugs in enterprise PostgreSQL systems using GDB and Linux tools.</span>
+        </li>
+        <li>
+          <span class="when">Aug 2019 – Mar 2022</span>
+          <span><strong>Associate Consultant (embedded systems and camera firmware)</strong> at Capgemini India. Built features for GoPro Hero 9 and Hero 10 cameras. Made video and photo mode presets that won the Team Excellence Award and the WOW Individual Excellence Award.</span>
+        </li>
+        <li>
+          <span class="when">Jan 2019 – Aug 2019</span>
+          <span><strong>Trainee (embedded systems and HMI)</strong> at Altran India. Built app and HMI parts for a car instrument cluster. Tested them with CAN tools and TRACE32.</span>
+        </li>
+        <li>
+          <span class="when">Jul 2013 – Aug 2015</span>
+          <span><strong>Associate Engineer (mobile device testing)</strong> at Samsung Electronics. Wrote and ran test cases for Android apps. Also tested network coverage and tracked defects.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <ul class="contact">
+      <li><a href="mailto:garghimanshi66@gmail.com">garghimanshi66@gmail.com</a></li>
+      <li><a href="https://www.linkedin.com/in/himanshi-garg-a95478b2/" target="_blank">Himanshi Garg on LinkedIn</a></li>
+      <li><a href="https://github.com/HimanshiLnu">GitHub</a></li>
+    </ul>
+    <p class="fine">Himanshi, New York</p>
+  </div>
+</footer>
+
+</body>
+</html>
